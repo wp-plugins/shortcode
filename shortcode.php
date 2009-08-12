@@ -4,7 +4,7 @@
 
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
-Description: A plugin that adds a buch of useful shortodes that you can use in your blog posts and pages.
+Description: A plugin that adds a bunch of useful shortodes that you can use in your blog posts and pages.
 Version: 0.1
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
