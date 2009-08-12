@@ -18,8 +18,6 @@ Shortcode is a plugin that adds several useful [shortcodes](http://codex.wordpre
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Success! You're ready to start adding shortcodes to your blog posts and pages.
 
-== Usage ==
-
 Using the plugin is as simple as adding any of the shortcodes found at [www.maxpagels.com/shortcodes.txt](http://www.maxpagels.com/shortcodes.txt) to your blog posts and/or pages (to make sure that the shortcodes are properly identified, use WordPress's HTML editor instead of the visual editor).
 
 Some of the codes you can use include:
