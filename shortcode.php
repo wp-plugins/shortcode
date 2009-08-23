@@ -4,8 +4,8 @@
 
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
-Description: A plugin that adds a bunch of useful shortodes that you can use in your blog posts and pages.
-Version: 0.1
+Description: A plugin that adds a buch of useful shortodes that you can use in your blog posts and pages.
+Version: 0.2
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -31,12 +31,21 @@ function post_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(id)
                          FROM $wpdb->posts
-                         WHERE post_status = 'publish'");
+                         WHERE post_type = 'post'
+                         AND post_status = 'publish'");
+}
+
+function page_count() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT count(id)
+                         FROM $wpdb->posts
+                         WHERE post_type = 'page'
+                         AND post_status = 'publish'");
 }
 
 function category_count() {
   global $wpdb;
-  return $wpdb->get_var("SELECT COUNT(*)
+  return $wpdb->get_var("SELECT count(*)
                          FROM $wpdb->term_taxonomy
                          WHERE taxonomy = 'category'
                          AND count > 0");
@@ -62,6 +71,7 @@ function age_in_days() {
 }
 
 add_shortcode('postcount', 'post_count');
+add_shortcode('pagecount', 'page_count');
 add_shortcode('catcount', 'category_count');
 add_shortcode('tagcount', 'tag_count');
 add_shortcode('ageindays', 'age_in_days');

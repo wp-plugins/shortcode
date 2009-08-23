@@ -35,4 +35,5 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.2: Bugfix & added page count shortcode
 - 0.1: Initial release, with shortcodes for post count, category count, tag count and blog age.
