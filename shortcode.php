@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a buch of useful shortodes that you can use in your blog posts and pages.
-Version: 0.2
+Version: 0.3
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -59,6 +59,13 @@ function tag_count() {
                          AND count > 0");
 }
 
+function comment_count() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT COUNT(*)
+                         FROM $wpdb->comments
+                         WHERE comment_approved = 1");
+}
+
 function age_in_days() {
   global $wpdb;
   $wpdb->show_errors();
@@ -74,6 +81,7 @@ add_shortcode('postcount', 'post_count');
 add_shortcode('pagecount', 'page_count');
 add_shortcode('catcount', 'category_count');
 add_shortcode('tagcount', 'tag_count');
+add_shortcode('commentcount', 'comment_count');
 add_shortcode('ageindays', 'age_in_days');
 
 ?>
