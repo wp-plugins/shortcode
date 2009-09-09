@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a buch of useful shortodes that you can use in your blog posts and pages.
-Version: 0.2
+Version: 0.3
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -51,12 +51,52 @@ function category_count() {
                          AND count > 0");
 }
 
+function category_per_post_avg() {
+  global $wpdb;
+  
+  $catcount = $wpdb->get_var("SELECT SUM(count)
+                              FROM $wpdb->term_taxonomy
+                              WHERE taxonomy = 'category'
+                              AND count > 0");
+                              
+  $postcount = $wpdb->get_var("SELECT count(id)
+                               FROM $wpdb->posts
+                               WHERE post_type = 'post'
+                               AND post_status = 'publish'");
+                               
+  return round(($catcount / $postcount), 2);
+}
+
+
 function tag_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT COUNT(*)
                          FROM $wpdb->term_taxonomy
                          WHERE taxonomy = 'post_tag'
                          AND count > 0");
+}
+
+function tag_per_post_avg() {
+  global $wpdb;
+  
+  $tagcount = $wpdb->get_var("SELECT SUM(count)
+                              FROM $wpdb->term_taxonomy
+                              WHERE taxonomy = 'post_tag'
+                              AND count > 0");
+                              
+  $postcount = $wpdb->get_var("SELECT count(id)
+                               FROM $wpdb->posts
+                               WHERE post_type = 'post'
+                               AND post_status = 'publish'");
+                               
+  return round(($tagcount / $postcount), 2);
+}
+
+function comment_count() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT COUNT(*)
+                         FROM $wpdb->comments
+                         WHERE comment_approved = 1");
 }
 
 function age_in_days() {
@@ -73,7 +113,10 @@ function age_in_days() {
 add_shortcode('postcount', 'post_count');
 add_shortcode('pagecount', 'page_count');
 add_shortcode('catcount', 'category_count');
+add_shortcode('catperpostavg', 'category_per_post_avg');
 add_shortcode('tagcount', 'tag_count');
+add_shortcode('tagperpostavg', 'tag_per_post_avg');
+add_shortcode('commentcount', 'comment_count');
 add_shortcode('ageindays', 'age_in_days');
 
 ?>
