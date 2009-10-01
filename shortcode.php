@@ -4,8 +4,8 @@
 
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
-Description: A plugin that adds a buch of useful shortodes that you can use in your blog posts and pages.
-Version: 0.4
+Description: A plugin that adds a bunch of useful shortodes that you can use in your blog posts and pages.
+Version: 0.4.5
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -47,6 +47,14 @@ function name_of_longest_post() {
 function length_of_longest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT MAX(LENGTH(post_content)) 
+                         FROM $wpdb->posts 
+                         WHERE post_type = 'post' 
+                         AND post_status = 'publish'");
+}
+
+function length_of_all_posts() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT SUM(LENGTH(post_content)) 
                          FROM $wpdb->posts 
                          WHERE post_type = 'post' 
                          AND post_status = 'publish'");
@@ -127,9 +135,21 @@ function age_in_days() {
   return round(($now-$then) / (24*60*60));
 }
 
+/*
+* Unfinished function - do NOT use
+function populartags($atts) {
+  extract(shortcode_atts(array('amount' => 10,
+                               'fontsizemin' => 11,
+                               'fontsizemax' => 11,
+                               'format' => 'flat'), $atts));
+  return wp_tag_cloud("smallest=".$fontsizemin."px&largest=".$fontsizemax."px&number=".$amount."px&format=$format&echo=0");
+}
+*/
+
 add_shortcode('postcount', 'post_count');
 add_shortcode('nameoflongestpost', 'name_of_longest_post');
 add_shortcode('longestpostlength', 'length_of_longest_post');
+add_shortcode('allpostslength', 'length_of_all_posts');
 add_shortcode('pagecount', 'page_count');
 add_shortcode('catcount', 'category_count');
 add_shortcode('catperpostavg', 'category_per_post_avg');
@@ -137,5 +157,9 @@ add_shortcode('tagcount', 'tag_count');
 add_shortcode('tagperpostavg', 'tag_per_post_avg');
 add_shortcode('commentcount', 'comment_count');
 add_shortcode('ageindays', 'age_in_days');
-
+/*
+* Unfinished function - do NOT use
+add_
+shortcode('populartags', 'populartags');
+*/
 ?>
