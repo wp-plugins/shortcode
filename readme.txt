@@ -3,7 +3,7 @@
 Contributors: maxpagels
 Tags: shortcode, statistics
 Requires at least: 2.5
-Tested up to: 2.8.4
+Tested up to: 3.0
 Stable tag: trunk
 
 Shortcode is a plugin that adds several useful shortcodes that you can use in your blog posts and pages.
@@ -35,6 +35,8 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.5.5: Added two new shortcodes: future posts & draft posts
+- 0.5: Added two new shortcodes: characters per post & posts per day
 - 0.4: Added shortcodes for printing the name of the longest published post and printing the length of the longest published post
 - 0.3.5: Added shortcodes for average number of tags/categories per published post
 - 0.3: Added comment count shortcode
