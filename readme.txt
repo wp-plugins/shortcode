@@ -35,6 +35,7 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.5.6: Removed unnecessary code and added new shortcode: photosingallery
 - 0.5.5: Added two new shortcodes: future posts & draft posts
 - 0.5: Added two new shortcodes: characters per post & posts per day
 - 0.4: Added shortcodes for printing the name of the longest published post and printing the length of the longest published post
