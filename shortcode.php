@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.5.6
+Version: 0.5.7
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -71,6 +71,14 @@ function length_of_longest_post() {
 function length_of_all_posts() {
   global $wpdb;
   return $wpdb->get_var("SELECT SUM(LENGTH(post_content)) 
+                         FROM $wpdb->posts 
+                         WHERE post_type = 'post' 
+                         AND post_status = 'publish'");
+}
+
+function total_words() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT SUM(LENGTH(post_content) - LENGTH(REPLACE(post_content, ' ', '')) + 1) 
                          FROM $wpdb->posts 
                          WHERE post_type = 'post' 
                          AND post_status = 'publish'");
@@ -191,6 +199,7 @@ add_shortcode('charsperpostavg', 'characters_per_post_avg');
 add_shortcode('futpostcount', 'future_post_count');
 add_shortcode('draftpostcount', 'draft_post_count');
 add_shortcode('photosingallery', 'photos_in_gallery');
+add_shortcode('totalwords', 'total_words');
 /*
 * Unfinished function - do NOT use
 add_
