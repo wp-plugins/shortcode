@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.5.7
+Version: 0.5.8
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -63,6 +63,23 @@ function name_of_longest_post() {
 function length_of_longest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT MAX(LENGTH(post_content)) 
+                         FROM $wpdb->posts 
+                         WHERE post_type = 'post' 
+                         AND post_status = 'publish'");
+}
+
+function name_of_shortest_post() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT DISTINCT post_title FROM $wpdb->posts
+                         WHERE LENGTH(post_content) in (SELECT MIN(LENGTH(post_content)) 
+                                                        FROM $wpdb->posts 
+                                                        WHERE post_type = 'post' 
+                                                        AND post_status = 'publish')");
+}
+
+function length_of_shortest_post() {
+  global $wpdb;
+  return $wpdb->get_var("SELECT MIN(LENGTH(post_content)) 
                          FROM $wpdb->posts 
                          WHERE post_type = 'post' 
                          AND post_status = 'publish'");
@@ -158,6 +175,11 @@ function age_in_days() {
   return round(($now-$then) / (24*60*60));
 }
 
+function age_in_days_with_comma() {
+  $res = number_format(age_in_days(), $thousands_sep=',');
+  return $res;
+}
+
 function posts_per_day_avg() {
   return round((post_count() / age_in_days()), 2);
 }
@@ -200,6 +222,9 @@ add_shortcode('futpostcount', 'future_post_count');
 add_shortcode('draftpostcount', 'draft_post_count');
 add_shortcode('photosingallery', 'photos_in_gallery');
 add_shortcode('totalwords', 'total_words');
+add_shortcode('ageindayscomma', 'age_in_days_with_comma');
+add_shortcode('shortestpostlength', 'length_of_shortest_post');
+add_shortcode('nameofshortestpost', 'name_of_shortest_post');
 /*
 * Unfinished function - do NOT use
 add_
