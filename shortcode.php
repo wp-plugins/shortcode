@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.5.8
+Version: 0.5.9
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -33,6 +33,11 @@ function post_count() {
                          FROM $wpdb->posts
                          WHERE post_type = 'post'
                          AND post_status = 'publish'");
+}
+
+function post_count_br() {
+  $res = post_count();
+  return number_format($res);
 }
 
 function future_post_count() {
@@ -109,12 +114,22 @@ function page_count() {
                          AND post_status = 'publish'");
 }
 
+function page_count_br() {
+  $res = page_count();
+  return number_format($res);
+}
+
 function category_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(*)
                          FROM $wpdb->term_taxonomy
                          WHERE taxonomy = 'category'
                          AND count > 0");
+}
+
+function category_count_br() {
+  $res = category_count();
+  return number_format($res);
 }
 
 function category_per_post_avg() {
@@ -140,6 +155,11 @@ function tag_count() {
                          FROM $wpdb->term_taxonomy
                          WHERE taxonomy = 'post_tag'
                          AND count > 0");
+}
+
+function tag_count_br() {
+  $res = tag_count();
+  return number_format($res);
 }
 
 function tag_per_post_avg() {
@@ -206,13 +226,17 @@ function populartags($atts) {
 */
 
 add_shortcode('postcount', 'post_count');
+add_shortcode('postcountbr', 'post_count_br');
 add_shortcode('nameoflongestpost', 'name_of_longest_post');
 add_shortcode('longestpostlength', 'length_of_longest_post');
 add_shortcode('allpostslength', 'length_of_all_posts');
 add_shortcode('pagecount', 'page_count');
+add_shortcode('pagecountbr', 'page_count_br');
 add_shortcode('catcount', 'category_count');
+add_shortcode('catcountbr', 'category_count_br');
 add_shortcode('catperpostavg', 'category_per_post_avg');
 add_shortcode('tagcount', 'tag_count');
+add_shortcode('tagcountbr', 'tag_count_br');
 add_shortcode('tagperpostavg', 'tag_per_post_avg');
 add_shortcode('commentcount', 'comment_count');
 add_shortcode('ageindays', 'age_in_days');
