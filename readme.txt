@@ -3,7 +3,7 @@
 Contributors: maxpagels
 Tags: shortcode, statistics
 Requires at least: 2.5
-Tested up to: 3.5.1
+Tested up to: 3.5.2
 Stable tag: trunk
 
 Shortcode is a plugin that adds several useful shortcodes that you can use in your blog posts and pages.
@@ -35,6 +35,7 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.6: Added British style total word count (thousands grouped with commas)
 - 0.5.9: Added British style post, category, page and tag counts (thousands grouped with commas)
 - 0.5.8: Added three new shortcodes for the length of the shortest post, name (title) of shortest post, and the number of days since the first post (grouped by thousands and separated with a comma sign)
 - 0.5.7: Added new shortcode: totalwords counts the total number of words in published posts
