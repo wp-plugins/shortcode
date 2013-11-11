@@ -35,6 +35,7 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.7: Added shortcodes for image count, gallery count, album count (for the NextGEN Gallery plugin). Special thanks to http://www.tiirikainen.fi for providing the code and the suggestion
 - 0.6: Added British style total word count (thousands grouped with commas)
 - 0.5.9: Added British style post, category, page and tag counts (thousands grouped with commas)
 - 0.5.8: Added three new shortcodes for the length of the shortest post, name (title) of shortest post, and the number of days since the first post (grouped by thousands and separated with a comma sign)

@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.6
+Version: 0.7
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -230,6 +230,20 @@ function populartags($atts) {
 }
 */
 
+function ngg_pictures_now() {
+  global $wpdb;
+  return intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures") );
+}
+function ngg_galleries_now() {
+  global $wpdb;
+  return intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery") );
+}
+
+function ngg_albums_now() {
+  global $wpdb;
+  return intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
+}
+
 add_shortcode('postcount', 'post_count');
 add_shortcode('postcountbr', 'post_count_br');
 add_shortcode('nameoflongestpost', 'name_of_longest_post');
@@ -255,6 +269,9 @@ add_shortcode('totalwordsbr', 'total_words_br');
 add_shortcode('ageindayscomma', 'age_in_days_with_comma');
 add_shortcode('shortestpostlength', 'length_of_shortest_post');
 add_shortcode('nameofshortestpost', 'name_of_shortest_post');
+add_shortcode('nggpictures', 'ngg_pictures_now');
+add_shortcode('nggalleries', 'ngg_galleries_now');
+add_shortcode('nggalbums', 'ngg_albums_now');
 /*
 * Unfinished function - do NOT use
 add_
