@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.7.1
+Version: 0.7.2
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -252,7 +252,7 @@ function wp_archive($atts) {
                              'before'          => '',
                              'after'           => '',
                              'show_post_count' => false,
-                             'echo'            => 1,
+                             'echo'            => false,
                              'order'           => 'DESC'), $atts );
   return wp_get_archives($s);
 }
