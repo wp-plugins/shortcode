@@ -3,7 +3,7 @@
 Contributors: maxpagels
 Tags: shortcode, statistics
 Requires at least: 2.5
-Tested up to: 3.7.1
+Tested up to: 3.8.1
 Stable tag: trunk
 
 Shortcode is a plugin that adds several useful shortcodes that you can use in your blog posts and pages.
@@ -35,6 +35,7 @@ Please send request for new shortcodes, questions and general feedback to max.pa
 
 == Changelog ==
 
+- 0.7.3: Added [ageinyears] shortcode
 - 0.7.2: Bugfix: the [wparchive] shortcode will not display incorrectly before all other post content
 - 0.7.1: Added a shortcode for displaying date-based archives. See http://www.maxpagels.com/shortcodes.txt for more information
 - 0.7: Added shortcodes for image count, gallery count, album count (for the NextGEN Gallery plugin). Special thanks to http://www.tiirikainen.fi for providing the code and the suggestion
