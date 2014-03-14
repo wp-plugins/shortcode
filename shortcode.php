@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.7.3
+Version: 0.7.4
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -223,16 +223,6 @@ function photos_in_gallery() {
                          FROM $wpdb->posts
                          WHERE post_mime_type like 'image%'");
 }
-/*
-* Unfinished function - do NOT use
-function populartags($atts) {
-  extract(shortcode_atts(array('amount' => 10,
-                               'fontsizemin' => 11,
-                               'fontsizemax' => 11,
-                               'format' => 'flat'), $atts));
-  return wp_tag_cloud("smallest=".$fontsizemin."px&largest=".$fontsizemax."px&number=".$amount."px&format=$format&echo=0");
-}
-*/
 
 function ngg_pictures_now() {
   global $wpdb;
@@ -291,9 +281,4 @@ add_shortcode('nggpictures', 'ngg_pictures_now');
 add_shortcode('nggalleries', 'ngg_galleries_now');
 add_shortcode('nggalbums', 'ngg_albums_now');
 add_shortcode('wparchive', 'wp_archive');
-/*
-* Unfinished function - do NOT use
-add_
-shortcode('populartags', 'populartags');
-*/
 ?>

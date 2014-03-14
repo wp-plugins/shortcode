@@ -31,10 +31,11 @@ When you are done inserting the shortcodes you want to use, save the changes to 
 
 == Feedback ==
 
-Please send request for new shortcodes, questions and general feedback to max.pagels1 (at) gmail.com.
+Like the plugin? Hate it? Want a new feature? [Send me some feedback](http://maxpagels.polldaddy.com/s/shortcode-survey)  -- no email address or registration needed.
 
 == Changelog ==
 
+- 0.7.4: No new shortcodes this time, just some code cleanup
 - 0.7.3: Added [ageinyears] shortcode
 - 0.7.2: Bugfix: the [wparchive] shortcode will not display incorrectly before all other post content
 - 0.7.1: Added a shortcode for displaying date-based archives. See http://www.maxpagels.com/shortcodes.txt for more information
