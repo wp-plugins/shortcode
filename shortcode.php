@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.7.4
+Version: 0.7.5
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -200,6 +200,10 @@ function age_in_days() {
   return round(($now-$then) / (24*60*60));
 }
 
+function age_in_months() {
+  return (int)(age_in_days() / (365.25 / 12));
+}
+
 function age_in_years() {
   return (int)(age_in_days() / 365);
 }
@@ -238,7 +242,6 @@ function ngg_albums_now() {
   return intval( $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum") );
 }
 
-
 function wp_archive($atts) {
   $s = shortcode_atts( array('type'            => 'monthly',
                              'limit'           => '',
@@ -266,6 +269,7 @@ add_shortcode('tagcountbr', 'tag_count_br');
 add_shortcode('tagperpostavg', 'tag_per_post_avg');
 add_shortcode('commentcount', 'comment_count');
 add_shortcode('ageindays', 'age_in_days');
+add_shortcode('ageinmonths', 'age_in_months');
 add_shortcode('ageinyears', 'age_in_years');
 add_shortcode('postsperdayavg', 'posts_per_day_avg');
 add_shortcode('charsperpostavg', 'characters_per_post_avg');

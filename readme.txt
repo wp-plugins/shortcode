@@ -3,7 +3,7 @@
 Contributors: maxpagels
 Tags: shortcode, statistics
 Requires at least: 2.5
-Tested up to: 3.8.1
+Tested up to: 3.8.2
 Stable tag: trunk
 
 Shortcode is a plugin that adds several useful shortcodes that you can use in your blog posts and pages.
@@ -35,6 +35,7 @@ Like the plugin? Hate it? Want a new feature? [Send me some feedback](http://max
 
 == Changelog ==
 
+- 0.7.5: Added [ageinmonths] shortcode
 - 0.7.4: No new shortcodes this time, just some code cleanup
 - 0.7.3: Added [ageinyears] shortcode
 - 0.7.2: Bugfix: the [wparchive] shortcode will not display incorrectly before all other post content
