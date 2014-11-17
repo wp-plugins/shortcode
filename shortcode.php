@@ -5,7 +5,7 @@
 Plugin name: Shortcode
 Plugin URI: http://www.maxpagels.com/projects/shortcode
 Description: A plugin that adds a bunch of useful shortcodes that you can use in your blog posts and pages.
-Version: 0.7.5
+Version: 0.8.0
 Author: Max Pagels
 Author URI: http://www.maxpagels.com
 
@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 function post_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(id)
-                         FROM $wpdb->posts
-                         WHERE post_type = 'post'
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts
+   WHERE post_type = 'post'
+   AND post_status = 'publish'");
 }
 
 function post_count_br() {
@@ -43,67 +43,67 @@ function post_count_br() {
 function future_post_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(id)
-                         FROM $wpdb->posts
-                         WHERE post_type = 'post'
-                         AND post_status = 'future'");
+   FROM $wpdb->posts
+   WHERE post_type = 'post'
+   AND post_status = 'future'");
 }
 
 function draft_post_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(id)
-                         FROM $wpdb->posts
-                         WHERE post_type = 'post'
-                         AND post_status = 'draft'");
+   FROM $wpdb->posts
+   WHERE post_type = 'post'
+   AND post_status = 'draft'");
 }
 
 function name_of_longest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT DISTINCT post_title FROM $wpdb->posts
-                         WHERE LENGTH(post_content) in (SELECT MAX(LENGTH(post_content)) 
-                                                        FROM $wpdb->posts 
-                                                        WHERE post_type = 'post' 
-                                                        AND post_status = 'publish')");
+   WHERE LENGTH(post_content) in (SELECT MAX(LENGTH(post_content)) 
+    FROM $wpdb->posts 
+    WHERE post_type = 'post' 
+    AND post_status = 'publish')");
 }
 
 function length_of_longest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT MAX(LENGTH(post_content)) 
-                         FROM $wpdb->posts 
-                         WHERE post_type = 'post' 
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts 
+   WHERE post_type = 'post' 
+   AND post_status = 'publish'");
 }
 
 function name_of_shortest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT DISTINCT post_title FROM $wpdb->posts
-                         WHERE LENGTH(post_content) in (SELECT MIN(LENGTH(post_content)) 
-                                                        FROM $wpdb->posts 
-                                                        WHERE post_type = 'post' 
-                                                        AND post_status = 'publish')");
+   WHERE LENGTH(post_content) in (SELECT MIN(LENGTH(post_content)) 
+    FROM $wpdb->posts 
+    WHERE post_type = 'post' 
+    AND post_status = 'publish')");
 }
 
 function length_of_shortest_post() {
   global $wpdb;
   return $wpdb->get_var("SELECT MIN(LENGTH(post_content)) 
-                         FROM $wpdb->posts 
-                         WHERE post_type = 'post' 
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts 
+   WHERE post_type = 'post' 
+   AND post_status = 'publish'");
 }
 
 function length_of_all_posts() {
   global $wpdb;
   return $wpdb->get_var("SELECT SUM(LENGTH(post_content)) 
-                         FROM $wpdb->posts 
-                         WHERE post_type = 'post' 
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts 
+   WHERE post_type = 'post' 
+   AND post_status = 'publish'");
 }
 
 function total_words() {
   global $wpdb;
   return $wpdb->get_var("SELECT SUM(LENGTH(post_content) - LENGTH(REPLACE(post_content, ' ', '')) + 1) 
-                         FROM $wpdb->posts 
-                         WHERE post_type = 'post' 
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts 
+   WHERE post_type = 'post' 
+   AND post_status = 'publish'");
 }
 
 function total_words_br() {
@@ -114,9 +114,9 @@ function total_words_br() {
 function page_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(id)
-                         FROM $wpdb->posts
-                         WHERE post_type = 'page'
-                         AND post_status = 'publish'");
+   FROM $wpdb->posts
+   WHERE post_type = 'page'
+   AND post_status = 'publish'");
 }
 
 function page_count_br() {
@@ -127,9 +127,9 @@ function page_count_br() {
 function category_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT count(*)
-                         FROM $wpdb->term_taxonomy
-                         WHERE taxonomy = 'category'
-                         AND count > 0");
+   FROM $wpdb->term_taxonomy
+   WHERE taxonomy = 'category'
+   AND count > 0");
 }
 
 function category_count_br() {
@@ -141,15 +141,15 @@ function category_per_post_avg() {
   global $wpdb;
   
   $catcount = $wpdb->get_var("SELECT SUM(count)
-                              FROM $wpdb->term_taxonomy
-                              WHERE taxonomy = 'category'
-                              AND count > 0");
-                              
+    FROM $wpdb->term_taxonomy
+    WHERE taxonomy = 'category'
+    AND count > 0");
+
   $postcount = $wpdb->get_var("SELECT count(id)
-                               FROM $wpdb->posts
-                               WHERE post_type = 'post'
-                               AND post_status = 'publish'");
-                               
+   FROM $wpdb->posts
+   WHERE post_type = 'post'
+   AND post_status = 'publish'");
+
   return round(($catcount / $postcount), 2);
 }
 
@@ -157,9 +157,9 @@ function category_per_post_avg() {
 function tag_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT COUNT(*)
-                         FROM $wpdb->term_taxonomy
-                         WHERE taxonomy = 'post_tag'
-                         AND count > 0");
+   FROM $wpdb->term_taxonomy
+   WHERE taxonomy = 'post_tag'
+   AND count > 0");
 }
 
 function tag_count_br() {
@@ -171,30 +171,30 @@ function tag_per_post_avg() {
   global $wpdb;
   
   $tagcount = $wpdb->get_var("SELECT SUM(count)
-                              FROM $wpdb->term_taxonomy
-                              WHERE taxonomy = 'post_tag'
-                              AND count > 0");
-                              
+    FROM $wpdb->term_taxonomy
+    WHERE taxonomy = 'post_tag'
+    AND count > 0");
+
   $postcount = $wpdb->get_var("SELECT count(id)
-                               FROM $wpdb->posts
-                               WHERE post_type = 'post'
-                               AND post_status = 'publish'");
-                               
+   FROM $wpdb->posts
+   WHERE post_type = 'post'
+   AND post_status = 'publish'");
+
   return round(($tagcount / $postcount), 2);
 }
 
 function comment_count() {
   global $wpdb;
   return $wpdb->get_var("SELECT COUNT(*)
-                         FROM $wpdb->comments
-                         WHERE comment_approved = 1");
+   FROM $wpdb->comments
+   WHERE comment_approved = 1");
 }
 
 function age_in_days() {
   global $wpdb;
   $date = $wpdb->get_var("SELECT post_date_gmt
-                         FROM $wpdb->posts
-                         WHERE ID = (SELECT MIN(ID) FROM $wpdb->posts WHERE post_status = 'publish')");
+   FROM $wpdb->posts
+   WHERE ID = (SELECT MIN(ID) FROM $wpdb->posts WHERE post_status = 'publish')");
   $then = strtotime($date);
   $now = strtotime(gmdate("M d Y H:i:s", time()));
   return round(($now-$then) / (24*60*60));
@@ -224,8 +224,8 @@ function characters_per_post_avg() {
 function photos_in_gallery() {
   global $wpdb;
   return $wpdb->get_var("SELECT COUNT(*)
-                         FROM $wpdb->posts
-                         WHERE post_mime_type like 'image%'");
+   FROM $wpdb->posts
+   WHERE post_mime_type like 'image%'");
 }
 
 function ngg_pictures_now() {
@@ -244,14 +244,47 @@ function ngg_albums_now() {
 
 function wp_archive($atts) {
   $s = shortcode_atts( array('type'            => 'monthly',
-                             'limit'           => '',
-                             'format'          => 'html', 
-                             'before'          => '',
-                             'after'           => '',
-                             'show_post_count' => false,
-                             'echo'            => false,
-                             'order'           => 'DESC'), $atts );
+   'limit'           => '',
+   'format'          => 'html', 
+   'before'          => '',
+   'after'           => '',
+   'show_post_count' => false,
+   'echo'            => false,
+   'order'           => 'DESC'), $atts );
   return wp_get_archives($s);
+}
+
+function wp_categories($atts) {
+  if(isset($atts['echo'])) {
+    $atts['echo'] = 0;
+  }
+  $s =  shortcode_atts(array(
+    'show_option_all'    => '',
+    'orderby'            => 'name',
+    'order'              => 'ASC',
+    'style'              => 'list',
+    'show_count'         => 0,
+    'hide_empty'         => 1,
+    'use_desc_for_title' => 1,
+    'child_of'           => 0,
+    'feed'               => '',
+    'feed_type'          => '',
+    'feed_image'         => '',
+    'exclude'            => '',
+    'exclude_tree'       => '',
+    'include'            => '',
+    'hierarchical'       => 1,
+    'title_li'           => '',
+    'show_option_none'   => __( 'No categories' ),
+    'number'             => null,
+    'echo'               => 0,
+    'depth'              => 0,
+    'current_category'   => 0,
+    'pad_counts'         => 0,
+    'taxonomy'           => 'category',
+    'walker'             => null
+    ), $atts); 
+  return wp_list_categories($s); 
 }
 
 add_shortcode('postcount', 'post_count');
@@ -285,4 +318,5 @@ add_shortcode('nggpictures', 'ngg_pictures_now');
 add_shortcode('nggalleries', 'ngg_galleries_now');
 add_shortcode('nggalbums', 'ngg_albums_now');
 add_shortcode('wparchive', 'wp_archive');
+add_shortcode('wpcategories', 'wp_categories');
 ?>

@@ -35,6 +35,7 @@ Like the plugin? Hate it? Want a new feature? [Send me some feedback](http://max
 
 == Changelog ==
 
+- 0.8.0: Added [wpcategories], for displaying lists of categories. See http://www.maxpagels.com/shortcodes.txt for more information
 - 0.7.5: Added [ageinmonths] shortcode
 - 0.7.4: No new shortcodes this time, just some code cleanup
 - 0.7.3: Added [ageinyears] shortcode
