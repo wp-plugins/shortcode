@@ -3,7 +3,7 @@
 Contributors: maxpagels
 Tags: shortcode, statistics
 Requires at least: 2.5
-Tested up to: 4.0
+Tested up to: 4.2.1
 Stable tag: trunk
 
 Shortcode is a plugin that adds several useful shortcodes that you can use in your blog posts and pages.
